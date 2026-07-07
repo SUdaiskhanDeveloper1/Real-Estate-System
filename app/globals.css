@@ -1,0 +1,5 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+a { text-decoration: none; }
+::selection { background: #1E40AF; color: white; }
