@@ -1,3 +1,4 @@
+"use client";
 import { Box, Grid, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import DashboardSidebar from "@/components/layout/DashboardSidebar";
 import DashboardNavbar from "@/components/layout/DashboardNavbar";
@@ -7,16 +8,31 @@ import RecentActivity from "@/components/dashboard/RecentActivity";
 import LeadsTable from "@/components/dashboard/LeadsTable";
 import PropertyCard from "@/components/properties/PropertyCard";
 import { properties } from "@/data/properties";
-import { CalendarCheck, Eye, Heart, Home, Percent, Users } from "lucide-react";
+import {
+  CalendarCheck,
+  Eye,
+  Heart,
+  Home,
+  LucideIcon,
+  Percent,
+  Users,
+} from "lucide-react";
+
+type DashboardStat = {
+  label: string;
+  value: string;
+  change: string;
+  icon: LucideIcon;
+};
 
 export default function DashboardPage() {
-  const stats = [
-    ["Total Listings", "42", "+8% this month", Home],
-    ["New Leads", "26", "+14% this week", Users],
-    ["Property Views", "18.4k", "+22% this month", Eye],
-    ["Scheduled Viewings", "12", "+5 this week", CalendarCheck],
-    ["Saved by Users", "1.2k", "+18%", Heart],
-    ["Conversion Rate", "6.8%", "+1.1%", Percent],
+  const stats: DashboardStat[] = [
+    { label: "Total Listings", value: "42", change: "+8% this month", icon: Home },
+    { label: "New Leads", value: "26", change: "+14% this week", icon: Users },
+    { label: "Property Views", value: "18.4k", change: "+22% this month", icon: Eye },
+    { label: "Scheduled Viewings", value: "12", change: "+5 this week", icon: CalendarCheck },
+    { label: "Saved by Users", value: "1.2k", change: "+18%", icon: Heart },
+    { label: "Conversion Rate", value: "6.8%", change: "+1.1%", icon: Percent },
   ];
   return (
     <Box display="flex" bg="brand.background">
@@ -33,8 +49,14 @@ export default function DashboardPage() {
               </Text>
             </Box>
             <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={5}>
-              {stats.map(([l, v, c, Icon]: any) => (
-                <StatCard key={l} label={l} value={v} change={c} icon={Icon} />
+              {stats.map((stat) => (
+                <StatCard
+                  key={stat.label}
+                  label={stat.label}
+                  value={stat.value}
+                  change={stat.change}
+                  icon={stat.icon}
+                />
               ))}
             </SimpleGrid>
             <Grid templateColumns={{ base: "1fr", xl: "2fr 1fr" }} gap={6}>

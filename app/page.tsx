@@ -1,15 +1,4 @@
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
-  Heading,
-  Text,
-  HStack,
-  Avatar,
-} from "@chakra-ui/react";
+import { Box, Container, Heading, Text, HStack, Avatar } from "@chakra-ui/react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSearch from "@/components/home/HeroSearch";
@@ -30,27 +19,6 @@ export default function HomePage() {
         <HeroSearch />
         <FeaturedProperties />
         <PropertyCategories />
-        <Container maxW="7xl" py={10}>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-            {[
-              // ["Verified agents", "500+"],
-              // ["Listings tracked", "2,500+"],
-              // ["Average rating", "4.9/5"],
-            ].map(([l, v]) => (
-              <Stat
-                key={l}
-                bg="white"
-                p={8}
-                borderRadius="24px"
-                border="1px solid"
-                borderColor="brand.softGrey"
-              >
-                <StatLabel>{l}</StatLabel>
-                <StatNumber>{v}</StatNumber>
-              </Stat>
-            ))}
-          </SimpleGrid>
-        </Container>
         <PopularLocations />
         <Container maxW="7xl" py={12}>
           <Box
